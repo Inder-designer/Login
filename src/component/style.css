@@ -1,0 +1,24 @@
+.authPage,.forgotPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100%;
+}
+.MuiTabs-flexContainer{
+    justify-content: center;
+}
+.MuiTabs-flexContainer button{
+    font-size: 20px;
+    font-weight: 600;
+}
+.css-1aquho2-MuiTabs-indicator{
+    height: 3px;
+}
+.MuiTabPanel-root{
+    min-height: 392px;
+}
+.loginFOrm,.signupFOrm{
+    max-width: 500px;
+    margin: auto;
+}
