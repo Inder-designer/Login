@@ -173,8 +173,8 @@ const Signup = () => {
             {/* Password  */}
             <label htmlFor="password" className='mb-2'>
               Password*
-              <span className={validPswd ? "d-inline" : "d-none"}> <FontAwesomeIcon icon={faCheck} /></span>
-              <span className={validPswd || !pswd ? "d-none" : "d-inline"}> <FontAwesomeIcon icon={faTimes} /></span>
+              <span className={pswd  ? "d-inline" : "d-none"}> <FontAwesomeIcon icon={!validPswd ? faTimes:faCheck} /></span>
+              {/* <span className={validPswd || !pswd ? "d-none" : "d-inline"}> <FontAwesomeIcon icon={faTimes} /></span> */}
             </label>
             <TextField
             className='w-100 mb-3'

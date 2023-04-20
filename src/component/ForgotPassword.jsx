@@ -2,11 +2,11 @@ import { Button, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import './style.css'
 import axios from '../api/axios'
+import { ToastContainer, toast } from 'react-toastify'
 
 const FORGOT_URL = '/forgotPassword'
 
 const ForgotPassword = () => {
-
     const [email, setEmail] = useState('')
     
     const forgotPswd = async (e) => {
@@ -14,9 +14,10 @@ const ForgotPassword = () => {
         
         try{
             const res = await axios.post(FORGOT_URL,
-                {domain: 'http://localhost:3000/forgot-password',email: email}
+                {domain: 'http://localhost:3000/',email: email}
             )
             console.log(JSON.stringify(res?.data))
+            toast(JSON.stringify(res?.data?.message))
         }catch (err) {
             console.log(err);
         }
@@ -26,6 +27,7 @@ const ForgotPassword = () => {
     <div>
         <div className="forgotPage">
             <div className="container">
+                <ToastContainer />
                 <form  action='/' onSubmit={forgotPswd} className="loginFOrm">
                     <h1 className='text-center'>
                         Forgot Password
@@ -42,7 +44,7 @@ const ForgotPassword = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     />
                     <div className='text-center'> 
-                    <Button type="submit" variant="contained" sx={{marginTop:"20px"}}  >Forgot Password</Button>
+                        <Button type="submit" variant="contained" sx={{marginTop:"20px"}}  >Forgot Password</Button>
                     </div>
                 </form>
             </div>
