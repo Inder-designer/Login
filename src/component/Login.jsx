@@ -2,6 +2,7 @@ import { Button, TextField } from '@mui/material'
 import React, { useEffect, useRef, useState } from 'react'
 import UserData from './data.json'
 
+const USER_REGEX = /^[a-zA-Z]{3,23}$/;
 const Login = () => {
     
     const [Email, setEmail] = useState("")

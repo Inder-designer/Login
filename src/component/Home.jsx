@@ -1,44 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import { Button, Container, Modal, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import axios from '../api/axios';
+import EditProfile from './EditProfile';
 
-const INFO_URL = '/me'
 
 const Home = () => {
   
   const navigate = useNavigate();
-  const [userInfo, setUserInfo] = useState('  ')
-
-  // setToken(localStorage.getItem("token"))
-  // console.log(localStorage.getItem("token"))
   
-  let ff = localStorage.getItem("token")
-
-  useEffect( () => {
-    
-    async function fetchUserInfo() {
-      try{
-        const res = await axios.get(INFO_URL,{
-          headers:{
-            'Authorization':JSON.parse(ff)
-          }
-        });
-       
-        setUserInfo(res.data.data);
-      } catch(err) {
-        // console.log(err, "Error>>>>>>>");
-      }
-    }
-    fetchUserInfo()
-    
-  },[])
-  // if(!ff){
-  //   setToken('hello')
-  //   console.log('Welcome')
-  // } else {
-  //   console.log('Empty')
-  // }
+  let iToken = localStorage.getItem("token")
 
   const logOut = () => {
     localStorage.clear();
@@ -55,14 +25,14 @@ const Home = () => {
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="#link">Link</Nav.Link>
               {
-                (ff?.length>0) ?
+                (iToken?.length>0) ?
                 <Nav.Link href="#home">My Ads</Nav.Link>
                 :
                 null
               }
               
               {
-                (ff?.length>0) ?
+                (iToken?.length>0) ?
                 <button className='btn btn-primary ms-3' onClick={logOut}>Logout</button>
                 
                 :
@@ -72,17 +42,10 @@ const Home = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <section className='userInfo'>
-              <div className="container">
-                <ul className="list-unstyled p-0 m-0">
-                  <li><span>Name:</span> {userInfo.firstName}</li>
-                  <li><span>Username:</span> {userInfo.username}</li>
-                  <li><span>Email:</span> {userInfo.email}</li>
-                  <li className='mt-3'><button className='btn btn-primary'>Edit Profile</button></li>
-                </ul>
-              </div>
-      </section>
 
+      {(iToken?.length>0) ? (
+        <EditProfile/>
+      ) : null}
     </div>
   )
 }
