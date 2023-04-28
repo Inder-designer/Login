@@ -6,8 +6,8 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Login from './Login';
 import './style.css'
-import Signup from './Signup';
 import LoginLive from './LoginLive';
+import SignupNew from './SignupNew';
 
 const AuthPage = () => {
     const [value, setValue] = React.useState('1');
@@ -27,7 +27,7 @@ const AuthPage = () => {
                         </TabList>
                     </Box>
                     <TabPanel value="1"><LoginLive/></TabPanel>
-                    <TabPanel value="2"><Signup/></TabPanel>
+                    <TabPanel value="2"><SignupNew setValue={setValue}/></TabPanel>
                 </TabContext>
             </div>
         </div>

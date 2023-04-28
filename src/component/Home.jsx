@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Container, Modal, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import EditProfile from './EditProfile';
+import SignupNew from './SignupNew';
 
 
 const Home = () => {

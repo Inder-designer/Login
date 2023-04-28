@@ -6,7 +6,7 @@ import axios from '../api/axios';
 
 
 const INFO_URL = '/me'
-const USER_REGEX = /^[a-zA-Z]{3,23}$/;
+const USER_REGEX = /^[a-zA-Z1-9-_0]{3,23}$/;
 
 const EditProfile = (props) => {
 
@@ -35,8 +35,8 @@ console.log(userInfo,"userInfo");
                     }
                 });
 
-                const {firstName,username}= res.data.data
-                setUserInfo({name:firstName,username});
+                const {firstName,username,email}= res.data.data
+                setUserInfo({name:firstName,username,email});
             } catch (err) {
                 // console.log(err, "Error>>>>>>>");
             }
